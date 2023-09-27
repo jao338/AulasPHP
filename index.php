@@ -9,7 +9,11 @@
     
     <?php
 
-        echo 'Hello, World';
+        $bebida = "refrigerante";
+
+        $$bebida = "suco";
+
+        echo $refrigerante;
 
     ?>
 
