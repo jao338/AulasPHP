@@ -3,39 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula009</title>
+    <title>Aula010</title>
 </head>
 <body>
     
     <?php
     
-    $numero = 10;
-    $media = 7;
+    $cor = "Rosa";
 
-    if($numero == 10){
-        echo "É igual a 10";
-    }else{
-        echo "Não é igual a 10";
-    }
-
-    echo "<hr>";
+    switch ($cor):
     
-    //Alternativa
+        case "Vermelho":
+            echo "Sua cor favorita é o vermelho";
+            break;
 
-    if($numero == 10):
-        echo "É igual a 10";
-    elseif($numero <= 9):
-        echo "É menor ou igual a 9";
-    else:
-        echo "É diferente de 10";
-    endif;
+        case "Azul" :
+            echo "Sua cor favorita é o azul";
+            break;
 
-    echo "<hr>";
+        default: 
+        echo "Sua cor favorita não é vermelho nem azul";
 
-    //Alternativa
-
-    echo ($media >= 7) ? "Aprovado" : "Reprovado";
-
+    endswitch;
+    
     ?>
 
 </body>
