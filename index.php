@@ -13,6 +13,8 @@
         $idade = 22;
         $altura = 1.73;
         $bonito = false;
+        $array = array("Gol", "Uno", "Camaro", 20, 20.1, true);
+        $cidade = NULL;
 
 
         echo var_dump($nome);
@@ -57,6 +59,42 @@
 
         echo '<hr><br>';
 
+        echo var_dump($array);
+
+        if(is_array($array)){
+            echo 'É um array';
+        }else{
+            echo 'Não é um array';
+        }
+
+        echo '<hr><br>';
+
+        class Cliente{
+            public $nome;
+
+            public function atribuirNome($nome){
+                $this->$nome = $nome;
+            }
+
+        }
+
+        $cliente = new Cliente();
+
+        $cliente->atribuirNome("Rodrigo");
+            
+        var_dump($cliente);
+
+        if(is_object($cliente)){
+            echo 'É um object';
+        }else{
+            echo 'Não é um object';
+        }
+
+        echo '<hr><br>';
+
+        echo var_dump($cidade);
+
+        
     ?>
 
 </body>
