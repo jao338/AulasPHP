@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula010</title>
+    <title>Aula011 - Estrutura condicional SWITCH CASE</title>
 </head>
 <body>
     
