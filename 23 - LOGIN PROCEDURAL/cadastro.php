@@ -15,6 +15,8 @@
         if(empty($login) || empty($senha) || empty($nome)){
             $erros[] = "<li>Preencha todos os campos corretamente.</li>";
         }else{
+
+            $senha = md5($senha);
             $sql = "INSERT INTO `Users` (`Id`, `Nome`, `Login`, `Senha`) VALUES (NULL, '$nome', '$login', '$senha')";
 
             $insert = mysqli_query($connect, $sql);
@@ -23,7 +25,6 @@
                 $sql = "SELECT * FROM Users WHERE login = '$login' AND Senha = '$senha'";
 
                 $busca = mysqli_query($connect, $sql);
-
                 $dados = mysqli_fetch_array($busca);
 
                 $_SESSION['id'] = $dados['Id'];
@@ -32,6 +33,8 @@
                 $_SESSION['senha'] = $dados['Senha'];
 
                 header('Location: home.php');
+
+                
             }
                         
         }

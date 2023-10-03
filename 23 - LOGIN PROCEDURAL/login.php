@@ -10,38 +10,38 @@
         $login = mysqli_escape_string($connect, $_POST['login']);
         $senha = mysqli_escape_string($connect, $_POST['senha']);
 
-        //  Verifica se alguma dos dois campos foi preenchido
-        if(empty($login) || empty($senha)){
-            $erros[] = "<li>O campo login/senha deve ser preenchido</li>";
+        if(empty($login) or empty($senha)){
+            $erros[] = "<li>O campo login/senha precisam ser informados</li>";
         }else{
-            //  Faz a busca leo usuário no banco de dados
-            $sql = "SELECT login FROM Users WHERE login = '$login'";
+            $sql = "SELECT Login FROM Users WHERE Login = '$login'";
+            $resultado = mysqli_query($connect, $sql);
 
-            $res = mysqli_query($connect, $sql);
-
-            //  Verifica se a variável '$res' possui algum registro
-            if(mysqli_num_rows($res) > 0){
-
-                $sql = "SELECT * FROM Users WHERE login = '$login' AND senha = '$senha'";
-
-                $res = mysqli_query($connect, $sql);
+            if(mysqli_num_rows($resultado) > 0){
+                $senha = md5($senha);
+                $sql = "SELECT * FROM Users WHERE Login = '$login' AND Senha = '$senha'";
+                $resultado = mysqli_query($connect, $sql);
                 
-                $dados = mysqli_fetch_array($res);
+                    if(mysqli_num_rows($resultado) == 1){
+                        
+                        $dados = mysqli_fetch_array($resultado);
+                        mysqli_close($connect);
 
-                $_SESSION['id'] = $dados['Id'];
-                $_SESSION['nome'] = $dados['Nome'];
-                $_SESSION['login'] = $dados['Login'];
-                $_SESSION['senha'] = $dados['Senha'];
+                        $_SESSION['id'] = $dados['Id'];
+                        $_SESSION['nome'] = $dados['Nome'];
+                        $_SESSION['login'] = $dados['Login'];
+                        $_SESSION['senha'] = $dados['Senha'];
 
-                header('Location: home.php');
-
+                        header('Location: home.php');
+                    }else{
+                        $erros[] = "<li>Usuário e senha não conferem</li>";
+                    }
             }else{
-                $erros[] = "<li> Usuário inexistente</li>";
+                $erros[] = "<li>Usuário inexistente</li>";
             }
+
         }
-
     }
-
+    
 ?>
 
 <!DOCTYPE html>
