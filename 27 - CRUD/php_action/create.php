@@ -4,11 +4,19 @@ session_start();
 
 require_once 'db_connect.php';
 
+function clear($input){
+    global $connect;
+
+    $var = mysqli_escape_string($connect, $input);
+
+    $var  = htmlspecialchars($var);
+}
+
 if(isset($_POST['btn-cadastrar'])){
 
-    $nome = mysqli_escape_string($connect, $_POST['nome']);
-    $sobreNome = mysqli_escape_string($connect, $_POST['sobrenome']);
-    $email = mysqli_escape_string($connect, $_POST['email']);
+    $nome = clear($connect, $_POST['nome']);
+    $sobreNome = clear($connect, $_POST['sobrenome']);
+    $email = clear($connect, $_POST['email']);
     $idade = $_POST['idade'];
 
     if(empty($nome) or empty($sobreNome) or empty($email) or empty($idade)){
