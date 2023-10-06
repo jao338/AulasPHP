@@ -1,0 +1,13 @@
+Parâmetros da função fopen('path/arquivo.txt', 'a');
+
+'r' - Aberto apenas para leitura; coloca o ponteiro do arquivo no início do arquivo.
+'r+' - Aberto para leitura e escrita; coloca o ponteiro do arquivo no início do arquivo.
+'w' - Aberto apenas para escrita; coloca o ponteiro do arquivo no início do arquivo e trunque o arquivo para comprimento zero. Se o arquivo não existir, tente criá-lo..
+'w+' - Aberto para leitura e escrita, caso contrário terá o mesmo comportamento que 'w'.
+'a' - Aberto apenas para escrita; coloca o ponteiro do arquivo no final do arquivo. Se o arquivo não existir, tenta criá-lo. As gravações são sempre anexadas.
+'a+' - Aberto para escrita e leitura; coloca o ponteiro do arquivo no final do arquivo. Se o arquivo não existir, tenta criá-lo. As gravações são sempre anexadas.
+'x' - Crie e abra apenas para escrita; coloque o ponteiro do arquivo no início do arquivo. Se o arquivo já existir, a chamada fopen() falhará retornando falsee gerando um erro de level E_WARNING. Se o arquivo não existir, tente criá-lo. Isso equivale a especificar O_EXCL|O_CREATsinalizadores para a open(2)chamada do sistema subjacente.
+'x+' - Criar e abrir para leitura e escrita; caso contrário, terá o mesmo comportamento que 'x'.
+'c' - Abra o arquivo apenas para gravação. Se o arquivo não existir, ele será criado. Se existir, não será truncado (ao contrário de 'w'), nem a chamada para esta função falhará (como é o caso de 'x'). O ponteiro do arquivo está posicionado no início do arquivo. Isso pode ser útil se for desejado obter um bloqueio de aviso (consulte rebanho() ) antes de tentar modificar o arquivo, pois o uso 'w'pode truncar o arquivo antes que o bloqueio seja obtido (se o truncamento for desejado, ftruncate() pode ser usado após o bloqueio é solicitado).
+'c+' - Abra o arquivo para leitura e escrita; caso contrário, terá o mesmo comportamento que 'c'.
+'e' - Defina o sinalizador close-on-exec no descritor de arquivo aberto. Disponível apenas em PHP compilado em sistemas em conformidade com POSIX.1-2008.
